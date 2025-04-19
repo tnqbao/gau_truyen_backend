@@ -1,0 +1,23 @@
+# Go binaries
+/bin/
+/obj/
+
+/vendor/
+
+# IDEs
+.idea/
+.vscode/
+pkg
+# System files
+.DS_Store
+Thumbs.db
+
+*.test
+
+# Log files
+*.log
+
+# Coverage reports
+coverage.out
+*.env
+.env
