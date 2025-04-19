@@ -11,7 +11,7 @@ type Comic struct {
 	ThumbUrl    string     `json:"thumb_url"`
 	PosterUrl   string     `json:"poster_url"`
 	Categories  []Category `gorm:"many2many:comics_categories;"`
-	Nation      []Nation   `gorm:"many2many:comics_nations;"`
+	Status      string     `json:"status"`
 	Chapters    []Chapter  `gorm:"foreignKey:ComicID"`
 	CreateAt    time.Time  `json:"create_at"`
 	UpdateAt    time.Time  `json:"update_at"`
