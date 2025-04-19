@@ -23,7 +23,7 @@ func InitRedis() {
 		redisPassword := os.Getenv("REDIS_PASSWORD")
 		redisDB := os.Getenv("REDIS_DB")
 		if redisDB == "" {
-			redisDB = "1"
+			redisDB = "2"
 		}
 		db, err := strconv.Atoi(redisDB)
 		if err != nil {
