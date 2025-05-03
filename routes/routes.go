@@ -2,12 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/tnqbao/gau_truyen_backend/api/admin"
-
-	//"github.com/tnqbao/gau_phim_backend/api/admin"
-	//"github.com/tnqbao/gau_phim_backend/api/admin/movie"
-	//"github.com/tnqbao/gau_phim_backend/api/authed"
-	//"github.com/tnqbao/gau_phim_backend/api/public"
+	"github.com/tnqbao/gau_truyen_backend/controller"
 	"github.com/tnqbao/gau_truyen_backend/middlewares"
 	"gorm.io/gorm"
 )
@@ -22,22 +17,23 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 
 	apiRoutes := r.Group("/api/gautruyen")
 	{
-		//publicRouter := apiRoutes.Group("/")
-		//{
-		//	//publicRouter.GET("/home-page", public.GetHomePageData)
-		//	//publicRouter.GET("/category/:slug", public.GetListMovieByCategory)
-		//	//publicRouter.GET("/type/:slug", public.GetListMovieByType)
-		//	//publicRouter.GET("/nation/:slug", public.GetListMovieByNation)
-		//
-		//}
+		publicRouter := apiRoutes.Group("/")
+		{
+			publicRouter.GET("/home-page", controller.GetHomePageData)
+			//	//publicRouter.GET("/category/:slug", public.GetListMovieByCategory)
+			//	//publicRouter.GET("/type/:slug", public.GetListMovieByType)
+			//	//publicRouter.GET("/nation/:slug", public.GetListMovieByNation)
+			//
+		}
 		adminRoutes := apiRoutes.Group("/")
 		{
 			adminRoutes.Use(middlewares.AuthMiddleware(), middlewares.AdminMiddleware())
-			adminRoutes.PUT("/crawl", admin.CrawlData)
+			adminRoutes.PUT("/crawl", controller.CrawlData)
+			adminRoutes.PUT("/update-chapter", controller.UpdateComicChapter)
 			//		adminRoutes.POST("/movie", movie.CreateMovie)
-			//		adminRoutes.PUT("/home-page/hero", admin.UpdateHeroHomePage)
-			//		adminRoutes.PUT("/home-page/release", admin.UpdateReleaseHomePage)
-			//		adminRoutes.PUT("/home-page/featured", admin.UpdateFeaturedHomePage)
+			adminRoutes.PUT("/home-page/hero", controller.UpdateHeroHomePage)
+			adminRoutes.PUT("/home-page/release", controller.UpdateReleaseHomePage)
+			adminRoutes.PUT("/home-page/featured", controller.UpdateFeaturedHomePage)
 		}
 		//
 		//	authedRoutes := apiRoutes.Group("/")

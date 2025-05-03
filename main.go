@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	err := godotenv.Load("/gau_phim/.env.flix")
+	err := godotenv.Load("/gau_phim/.env")
 	if err != nil {
 		log.Fatalf("Error loading .env file: %v", err)
 	}

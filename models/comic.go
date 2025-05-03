@@ -9,7 +9,6 @@ type Comic struct {
 	Author      string     `json:"author"`
 	Description string     `json:"description"`
 	ThumbUrl    string     `json:"thumb_url"`
-	PosterUrl   string     `json:"poster_url"`
 	Categories  []Category `gorm:"many2many:comics_categories;"`
 	Status      string     `json:"status"`
 	Chapters    []Chapter  `gorm:"foreignKey:ComicID"`

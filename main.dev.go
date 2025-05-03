@@ -16,7 +16,7 @@ func main() {
 		log.Fatalf("Error loading .env file: %v", err)
 	}
 
-	config.InitRedis()
+	//config.InitRedis()
 	db := config.InitDB()
 
 	router := routes.SetupRouter(db)
